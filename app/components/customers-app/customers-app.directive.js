@@ -1,11 +1,8 @@
 angular.module('ca.components.customers-app', [
-    'ba.components.bookmarks-list',
-
-
-    'ca.customers-service',
-
+    'ca.components.customers-list',
+    'ca.components.orders-list',
     'ui.router'
-]).directive('customersApp', function($mdDialog, customersService){
+]).directive('customersApp', function($mdDialog){
     return {
         templateUrl: 'app/components/customers-app/customers-app.template.html',
         link: function($scope){
@@ -64,9 +61,9 @@ angular.module('ca.components.customers-app', [
 angular.module('ca.components.customers-app').config(function($stateProvider) {
   $stateProvider.state('users', {
     url: '/users',
-    template: 'users'
+    template: '<customers-list></customers-list>'
   }).state('orders', {
     url: '/orders',
-    template: 'orders'
+    template: '<orders-list></orders-list>'
   });
 });

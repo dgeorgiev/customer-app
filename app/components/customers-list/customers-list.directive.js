@@ -1,33 +1,19 @@
-angular.module('ba.components.bookmarks-list', [
-    'ui.router'
-]).directive('bookmarksList', function ($state) {
+angular.module('ca.components.customers-list', [
+    'ca.users-service'
+]).directive('customersList', function (usersService) {
     return {
-        templateUrl: 'app/components/bookmarks-list/bookmarks-list.template.html',
-        scope: {
-            bookmarks: '=',
-            tagsMap: '=',
-            showForm: '=',
-        },
+        templateUrl: 'app/components/customers-list/customers-list.template.html',
         link: function($scope){
-            $scope.bookmarks = $scope.bookmarks || [];
-            $scope.selectedTag = $state.params.tag;
+            
+            $scope.users = usersService.query();
             
             $scope.$on('deletedBookmark', function(event, id){
-                $scope.bookmarks = $scope.bookmarks.reduce(function(ret, element){
+                $scope.users = $scope.bookmarks.reduce(function(ret, element){
                     if(element._id.$oid != id) ret.push(element);
                     return ret;
                 }, []);
             });
             
         }
-    };
-}).filter('tag', function(){
-    return function(records, tag){
-        if(records.length) {
-            return records.filter(function(record){
-                return (tag) ? record.tags.indexOf(tag) >= 0 : true;
-            });
-        }
-        return records;
     };
 });

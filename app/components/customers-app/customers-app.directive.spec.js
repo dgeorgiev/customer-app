@@ -1,12 +1,11 @@
-describe('ba.components.bookmarks-app', function () {
+ddescribe('ca.components.customers-app', function () {
     
     beforeEach(module('ui.router'));
     beforeEach(module('material.components.dialog'));
-    beforeEach(module('ba.components.bookmarks-app'));
+    beforeEach(module('ca.components.customers-app'));
     
-    
-    beforeEach(module('ba.components.bookmarks-app', function ($provide ) {
-        var bookmarks = [
+    beforeEach(module('ca.components.customers-app', function ($provide ) {
+        var customers = [
             {
                 "_id": {
                 "$oid": "571785b8e4b046f2cf46547a"
@@ -32,21 +31,21 @@ describe('ba.components.bookmarks-app', function () {
                 "tags": "twitter, hello"
             }
         ];
-        $provide.factory('bookmarksService', function () {
+        $provide.factory('customersService', function () {
             return {
                 'get': function () {
-                    return bookmarks[0];
+                    return customers[0];
                 },
                 'update': function () {
                     var fakePromise = $q.defer();
-                    fakePromise.resolve(bookmarks);
+                    fakePromise.resolve(customers);
                     return {
                         $promise: fakePromise.promise
                     };
                 },
                 'query': function () {
                     var fakePromise = $q.defer();
-                    fakePromise.resolve(bookmarks);
+                    fakePromise.resolve(customers);
                     return {
                         $promise: fakePromise.promise
                     };
@@ -61,7 +60,7 @@ describe('ba.components.bookmarks-app', function () {
         $mDialog = _$mdDialog_;
         $q =  _$q_;
         
-        directive = directiveBuilder.$build('<bookmarks-app></bookmarks-app>');
+        directive = directiveBuilder.$build('<customers-app></customers-app>');
        
     }));
 

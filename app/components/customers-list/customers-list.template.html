@@ -4,12 +4,11 @@
             List
         </md-subheader>
         
-        <md-list-item ng-repeat="record in bookmarks | tag : selectedTag track by $index" layout-padding flex>
+        <md-list-item ng-repeat="record in users track by $index" layout-padding flex>
             <p>
-                {{ record.name }}
-                ({{ record.url }})
-                |
-                {{ record.tags }}
+                {{ record.first_name }}
+                {{ record.last_name }}
+                <md-button>View 0 orders</md-button>
             </p>
             
             <md-menu>

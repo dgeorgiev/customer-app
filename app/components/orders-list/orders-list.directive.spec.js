@@ -1,7 +1,7 @@
-describe('ca.components.customers-list', function () {
+describe('ba.components.bookmarks-list', function () {
     
     beforeEach(module('ui.router'));
-    beforeEach(module('ca.components.customers-list'));
+    beforeEach(module('ba.components.bookmarks-list'));
     
     var directive, $state, bookmarks;
     beforeEach(inject(function (directiveBuilder, _$state_) {
