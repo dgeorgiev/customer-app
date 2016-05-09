@@ -1,0 +1,45 @@
+<div layout="column" class="relative main-content" layout-fill role="main" style="height: 100%">
+
+  <md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="showForm($event)">
+    <ng-md-icon icon="add"></ng-md-icon>
+  </md-button>
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+        <ng-md-icon icon="menu"></ng-md-icon>
+      </md-button>
+      <h3 flex="10">
+        Store
+      </h3>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+  <section layout="row" flex>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+      <md-content>
+
+        <md-list>
+            <md-list-item ui-sref-active="active" ui-sref="users">
+                <p>Users</p>
+            </md-list-item>
+            <md-list-item ui-sref-active="active" ui-sref="orders">
+                <p>Orders</p>
+            </md-list-item>
+        </md-list>
+
+      </md-content>
+    </md-sidenav>
+
+    <md-content flex layout-padding>
+      <ui-view layout="column" layout-fill layout-padding>
+
+        <bookmarks-list bookmarks="bookmarks" show-form="showForm"></bookmarks-list>
+
+      </ui-view>
+    </md-content>
+
+  </section>
+</div>

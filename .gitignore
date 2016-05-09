@@ -1,0 +1,16 @@
+node_modules
+bower_components
+coverage
+
+.sass-cache
+.idea
+.tmp
+
+jshint.xml
+index.html
+
+app/components/**/*.css
+app/demo-code/**/*.css
+deployment/
+dist
+                                                 

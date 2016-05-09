@@ -1,0 +1,38 @@
+<form name="bookmarkForm">
+  <md-input-container class="md-block">
+    <label>Name</label>
+    <input required name="name" ng-model="bookmark.name" minus-validator>
+  </md-input-container>
+
+  <md-input-container class="md-block">
+    <label>Url</label>
+    <input required type="url" name="url" ng-model="bookmark.url" minus-validator>
+  </md-input-container>
+
+  <md-input-container class="md-block">
+    <label>Tags (separeted with commas)</label>
+    <input required type="tags" name="tags" ng-model="bookmark.tags" minus-validator>
+  </md-input-container>
+
+  <span flex></span>
+
+  <div  ng-if="!bookmark._id">
+    <md-button ng-click="clear(bookmarkForm)">
+      Clear
+    </md-button>
+    
+      <md-button class="md-accent md-raised md-primary" ng-click="save()" ng-disabled="bookmarkForm.$invalid" style="margin-right:20px;">
+      Save
+    </md-button>
+  </div>
+  
+  
+  <div  ng-if="bookmark._id">
+    <md-button ng-click="close()">
+      Cancel
+    </md-button>
+    <md-button class="md-accent md-raised md-primary" ng-click="bookmark.save()" ng-disabled="bookmarkForm.$invalid" style="margin-right:20px;">
+      Update
+    </md-button>
+  </div>
+</form>

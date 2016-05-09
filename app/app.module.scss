@@ -1,0 +1,18 @@
+app, bookmarks-app{
+    height: 100%;
+}
+.layout-row.flex {
+    height: 100%;
+}
+ng-md-icon {
+    fill: currentColor;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+}
+.search {
+    margin-top: 33px;
+}
+md-list-item.active {
+    color: red;
+}

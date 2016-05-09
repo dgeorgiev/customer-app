@@ -1,0 +1,26 @@
+<div layout="row" layout-align="center center">
+    <md-list>
+        <md-subheader flex class="md-no-sticky">
+            List
+        </md-subheader>
+        
+        <md-list-item ng-repeat="record in bookmarks | tag : selectedTag track by $index" layout-padding flex>
+            <p>
+                {{ record.name }}
+                ({{ record.url }})
+                |
+                {{ record.tags }}
+            </p>
+            
+            <md-menu>
+                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <ng-md-icon icon="settings"></ng-md-icon>
+                </md-button>
+                <md-menu-content>
+                    <md-menu-item><md-button ng-click="showForm($event, record)">Edit</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="record.remove()">Remove</md-button></md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-list-item>
+    </md-list>
+</div>
