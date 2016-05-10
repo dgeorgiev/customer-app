@@ -15,10 +15,10 @@
     <span flex></span>
 
 
-    <md-button ng-click="clear()">
+    <md-button ng-click="clear(userForm)">
       Clear
     </md-button>
-    <md-button class="md-accent md-raised md-primary" ng-click="save()" ng-disabled="userForm.$invalid" style="margin-right:20px;">
+    <md-button class="md-accent md-raised md-primary" ng-click="save(userForm)" ng-disabled="userForm.$invalid" style="margin-right:20px;">
       Save
     </md-button>
   </form>

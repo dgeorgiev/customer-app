@@ -11,8 +11,8 @@ angular.module('ca.components.customers-list', [
             
             $scope.users = $scope.users || [];
 
-            $scope.$on('deletedBookmark', function(event, id){
-                $scope.users = $scope.bookmarks.reduce(function(ret, element){
+            $scope.$on('deletedUser', function(event, id){
+                $scope.users = $scope.users.reduce(function(ret, element){
                     if(element._id.$oid != id) ret.push(element);
                     return ret;
                 }, []);

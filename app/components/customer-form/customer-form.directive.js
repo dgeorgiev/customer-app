@@ -9,6 +9,8 @@ angular.module('ca.components.customer-form', [
         link: function($scope){
             
             $scope.clear = function(form) {
+                form.$setPristine();
+                form.$setUntouched();
                 $scope.customer = {};
             };
             

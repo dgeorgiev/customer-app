@@ -23,7 +23,7 @@ angular.module('ca.orders-service', [
         
         this.$delete({id: id });
         
-        $rootScope.$broadcast('deletedBookmark', id);
+        $rootScope.$broadcast('deletedOrder', id);
         
     };
     

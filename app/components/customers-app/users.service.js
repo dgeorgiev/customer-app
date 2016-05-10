@@ -32,7 +32,7 @@ angular.module('ca.users-service', [
         
         this.$delete({id: id });
         
-        $rootScope.$broadcast('deletedBookmark', id);
+        $rootScope.$broadcast('deletedUser', id);
         
     };
     

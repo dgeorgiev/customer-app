@@ -6,8 +6,6 @@ angular.module('ca.components.orders-list', [
         templateUrl: 'app/components/orders-list/orders-list.template.html',
         link: function($scope){
             
-            console.log($state);
-            
             if($state.params.customer){
                 $scope.orders = ordersService.byCustomer($state.params.customer);
             } else {

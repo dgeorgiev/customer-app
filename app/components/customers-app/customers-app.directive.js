@@ -32,6 +32,6 @@ angular.module('ca.components.customers-app').config(function($stateProvider) {
     template: '<orders-list></orders-list>'
   }).state('customerOrders', {
     url: '/orders/:customer',
-    template: '<customer-orders-list></customer-orders-list>'
+    template: '<customer-orders-list show-form="true"></customer-orders-list>'
   });
 });

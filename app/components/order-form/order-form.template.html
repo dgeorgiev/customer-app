@@ -1,0 +1,24 @@
+<div layout="row" layout-align="center center">
+  <form name="orderForm">
+    <md-input-container class="md-block">
+      <label>Product</label>
+      <input required name="product" ng-model="order.product" minus-validator>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Quantity</label>
+      <input required name="quantity" ng-model="order.quantity" minus-validator>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Price</label>
+      <input required name="price" ng-model="order.price" minus-validator>
+    </md-input-container>
+    <span flex></span>
+
+    <md-button ng-click="clear(orderForm)">
+      Clear
+    </md-button>
+    <md-button class="md-accent md-raised md-primary" ng-click="save(orderForm)" ng-disabled="orderForm.$invalid" style="margin-right:20px;">
+      Save
+    </md-button>
+  </form>
+</div>
