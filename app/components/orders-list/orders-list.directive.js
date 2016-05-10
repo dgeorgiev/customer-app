@@ -1,11 +1,18 @@
 angular.module('ca.components.orders-list', [
-    'ca.orders-service'
-]).directive('ordersList', function (ordersService) {
+    'ca.orders-service',
+    'ui.router'
+]).directive('ordersList', function (ordersService, $state) {
     return {
         templateUrl: 'app/components/orders-list/orders-list.template.html',
         link: function($scope){
             
-            $scope.orders = ordersService.query();
+            console.log($state);
+            
+            if($state.params.customer){
+                $scope.orders = ordersService.byCustomer($state.params.customer);
+            } else {
+                $scope.orders = ordersService.query();
+            }
             
             $scope.$on('deletedBookmark', function(event, id){
                 $scope.orders = $scope.bookmarks.reduce(function(ret, element){

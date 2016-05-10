@@ -1,25 +1,27 @@
-angular.module('ba.components.bookmark-form', [
-    'ca.customers-service'
-]).directive('bookmarkForm', function($rootScope, $mdDialog, $mdMedia, customersService){
+angular.module('ca.components.customer-form', [
+    'ca.users-service'
+]).directive('customerForm', function($rootScope, $mdDialog, $mdMedia, usersService){
     return {
-        templateUrl: 'app/components/bookmark-form/bookmark-form.template.html',
+        templateUrl: 'app/components/customer-form/customer-form.template.html',
+        scope: {
+            customer: '='
+        },
         link: function($scope){
             
-            $scope.close = function() {
-                $mdDialog.cancel();
-            };
-            
             $scope.clear = function(form) {
-                $scope.bookmark = {};
-                $scope.bookmark.url = '';
-                form.$setPristine();
-                form.$setUntouched();
+                $scope.customer = {};
             };
             
             $scope.save =  function(form) {
-                bookmarksService.save($scope.bookmark, function(){
-                    $rootScope.$broadcast('bookmarksUpdated');
-                });
+                if($scope.customer._id){
+                    $scope.customer.save(function(){
+                        $rootScope.$broadcast('usersUpdated');
+                    });
+                } else {
+                    usersService.save($scope.customer, function(){
+                        $rootScope.$broadcast('usersUpdated');
+                    });
+                }
             };
         }
     }      

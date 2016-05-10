@@ -23,7 +23,7 @@
 
         <md-list>
             <md-list-item ui-sref-active="active" ui-sref="users">
-                <p>Users</p>
+                <p>Customers</p>
             </md-list-item>
             <md-list-item ui-sref-active="active" ui-sref="orders">
                 <p>Orders</p>
@@ -35,9 +35,7 @@
 
     <md-content flex layout-padding>
       <ui-view layout="column" layout-fill layout-padding>
-
-        <bookmarks-list bookmarks="bookmarks" show-form="showForm"></bookmarks-list>
-
+        <orders-list></orders-list>
       </ui-view>
     </md-content>
 

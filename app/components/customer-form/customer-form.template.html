@@ -1,38 +1,25 @@
-<form name="bookmarkForm">
-  <md-input-container class="md-block">
-    <label>Name</label>
-    <input required name="name" ng-model="bookmark.name" minus-validator>
-  </md-input-container>
+<div layout="row" layout-align="center center">
+  <form name="userForm">
+    <md-input-container>
+      <label>First name</label>
+      <input required name="first_name" ng-model="customer.first_name" minus-validator>
+    </md-input-container>
+    <md-input-container>
+      <label>Last name</label>
+      <input required name="last_name" ng-model="customer.last_name" minus-validator>
+    </md-input-container>
+    <md-input-container>
+      <label>City</label>
+      <input required name="city" ng-model="customer.city" minus-validator>
+    </md-input-container>
+    <span flex></span>
 
-  <md-input-container class="md-block">
-    <label>Url</label>
-    <input required type="url" name="url" ng-model="bookmark.url" minus-validator>
-  </md-input-container>
 
-  <md-input-container class="md-block">
-    <label>Tags (separeted with commas)</label>
-    <input required type="tags" name="tags" ng-model="bookmark.tags" minus-validator>
-  </md-input-container>
-
-  <span flex></span>
-
-  <div  ng-if="!bookmark._id">
-    <md-button ng-click="clear(bookmarkForm)">
+    <md-button ng-click="clear()">
       Clear
     </md-button>
-    
-      <md-button class="md-accent md-raised md-primary" ng-click="save()" ng-disabled="bookmarkForm.$invalid" style="margin-right:20px;">
+    <md-button class="md-accent md-raised md-primary" ng-click="save()" ng-disabled="userForm.$invalid" style="margin-right:20px;">
       Save
     </md-button>
-  </div>
-  
-  
-  <div  ng-if="bookmark._id">
-    <md-button ng-click="close()">
-      Cancel
-    </md-button>
-    <md-button class="md-accent md-raised md-primary" ng-click="bookmark.save()" ng-disabled="bookmarkForm.$invalid" style="margin-right:20px;">
-      Update
-    </md-button>
-  </div>
-</form>
+  </form>
+</div></div>

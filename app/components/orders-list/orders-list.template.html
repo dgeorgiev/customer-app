@@ -1,14 +1,5 @@
-<md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="order in orders">
-        <md-card>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Viktor</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                
-            </md-card-content>
-        </md-card>
+<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+    <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="user in users">
+        <customer-orders-list customer="user._id.$oid"></customer-orders-list>
     </div>
 </md-content>

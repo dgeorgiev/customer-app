@@ -1,0 +1,33 @@
+<md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{ user.first_name + ' ' + user.last_name }}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <md-content class="md-padding" layout-xs="column" layout="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Unit price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in orders" ng-init="$parent.total = $parent.total + (order.quantity * order.price)">
+                <td>{{ order.product }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.price | currency }}</td>
+                <td>{{ order.quantity * order.price | currency }}</td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+                <td><strong>{{ total | currency }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</md-content>
+            </md-card-content>
+        </md-card>

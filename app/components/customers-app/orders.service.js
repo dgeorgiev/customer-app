@@ -27,6 +27,10 @@ angular.module('ca.orders-service', [
         
     };
     
+    Orders.byCustomer = function(id) {
+        return this.query({q: {customer_id: id}});
+    }
+    
     Orders.prototype.save = function() {
         
         var id = this._id.$oid;

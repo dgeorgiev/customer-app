@@ -1,3 +1,4 @@
+<customer-form customer="customer"></customer-form>
 <div layout="row" layout-align="center center">
     <md-list>
         <md-subheader flex class="md-no-sticky">
@@ -5,18 +6,17 @@
         </md-subheader>
         
         <md-list-item ng-repeat="record in users track by $index" layout-padding flex>
-            <p>
-                {{ record.first_name }}
-                {{ record.last_name }}
-                <md-button>View 0 orders</md-button>
-            </p>
+            {{ record.first_name }}
+            {{ record.last_name }}
+            <small>{{ record.city }}</small>
+            <md-button ui-sref="customerOrders({customer: record._id.$oid})">View {{ record.orders().length }} orders</md-button>
             
             <md-menu>
                 <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
                     <ng-md-icon icon="settings"></ng-md-icon>
                 </md-button>
                 <md-menu-content>
-                    <md-menu-item><md-button ng-click="showForm($event, record)">Edit</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="edit(record)">Edit</md-button></md-menu-item>
                     <md-menu-item><md-button ng-click="record.remove()">Remove</md-button></md-menu-item>
                 </md-menu-content>
             </md-menu>
