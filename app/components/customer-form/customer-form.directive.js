@@ -1,6 +1,6 @@
 angular.module('ca.components.customer-form', [
     'ca.users-service'
-]).directive('customerForm', function($rootScope, $mdDialog, $mdMedia, usersService){
+]).directive('customerForm', function($rootScope, usersService){
     return {
         templateUrl: 'app/components/customer-form/customer-form.template.html',
         scope: {

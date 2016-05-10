@@ -1,14 +1,14 @@
-describe('ba.components.bookmarks-list', function () {
+describe('ca.components.orders-list', function () {
     
     beforeEach(module('ui.router'));
-    beforeEach(module('ba.components.bookmarks-list'));
+    beforeEach(module('ca.components.orders-list'));
     
-    var directive, $state, bookmarks;
+    var directive, $state, orders;
     beforeEach(inject(function (directiveBuilder, _$state_) {
         $state = _$state_;
         
-        directive = directiveBuilder.$build('<bookmarks-list bookmarks="bookmarks" show-form="showForm"></bookmarks-list>');
-        directive.scope.bookmarks = [
+        directive = directiveBuilder.$build('<orders-list orders="orders" show-form="showForm"></orders-list>');
+        directive.scope.orders = [
             {
                 "_id": {
                 "$oid": "571785b8e4b046f2cf46547a"
@@ -42,20 +42,20 @@ describe('ba.components.bookmarks-list', function () {
         expect($filter('tag')).toBeDefined();
     }));
     
-    it('should list correct number of bookmarks from scope', function(){
+    it('should list correct number of orders from scope', function(){
         directive.scope.$digest();
         expect(directive.element.children().find('md-list-item').length).toEqual(3);
         
-        directive.scope.bookmarks = [];
+        directive.scope.orders = [];
         directive.scope.$digest();
         expect(directive.element.children().find('md-list-item').length).toEqual(0);
         
     });
     
     it('should filter records by tag', inject(function (tagFilter) {
-        expect(tagFilter(directive.scope.bookmarks, '').length).toEqual(3);
+        expect(tagFilter(directive.scope.orders, '').length).toEqual(3);
         
-        expect(tagFilter(directive.scope.bookmarks, 'twitter').length).toEqual(1);
+        expect(tagFilter(directive.scope.orders, 'twitter').length).toEqual(1);
     }));
     
     
@@ -64,12 +64,12 @@ describe('ba.components.bookmarks-list', function () {
         var $broadcast = spyOn(directive.scope, '$on').and.callThrough();
         directive.scope.$digest();
         
-        expect(directive.scope.bookmarks.length).toEqual(3);
+        expect(directive.scope.orders.length).toEqual(3);
         
         directive.scope.$broadcast('deletedBookmark', '571785b8e4b046f2cf46547a');        
         directive.scope.$digest();
         
-        expect(directive.scope.bookmarks.length).toEqual(2);
+        expect(directive.scope.orders.length).toEqual(2);
 
     });
     

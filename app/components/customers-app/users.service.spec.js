@@ -1,26 +1,26 @@
-describe('ba.bookmarks-service', function () {
+xdescribe('ca.users-service', function () {
     
     
-    beforeEach(module('ba.bookmarks-service'));
+    beforeEach(module('ba.users-service'));
     
-    var bookmarksService, $httpBackend;
+    var usersService, $httpBackend;
     
-    beforeEach(inject(function (_bookmarksService_, _$httpBackend_) {
-        bookmarksService = _bookmarksService_;
-        bookmarksService.prototype.$update = function(ignored, callback){
+    beforeEach(inject(function (_usersService_, _$httpBackend_) {
+        usersService = _usersService_;
+        usersService.prototype.$update = function(ignored, callback){
             callback();
         };
         $httpBackend = _$httpBackend_;
-        $httpBackend.expect('GET', 'https://api.mongolab.com/api/1/databases/angular-training-bookmarks/collections/bookmarks?apiKey=KGtpIoEDeTqTkwISpgnhDarX_Vj1AdJA').respond([ { "_id" : { "$oid" : "57163da5e4b065a8c4d775e8"} , "name" : "Facebook" , "tags" : "test" , "url" : "http://facebook.com"} , { "_id" : { "$oid" : "5718db94e4b0e99eb262b0ed"} , "name" : "Twitter" , "url" : "http://twitter.com" , "tags" : "twitter, hello"} , { "_id" : { "$oid" : "571a082d0a00b2160cdda797"} , "name" : "google" , "url" : "http://google.bg" , "tags" : "google, evil"} , { "_id" : { "$oid" : "571dcd9ff8c2e747621458ec"} , "name" : "test" , "url" : "http://epam.com" , "tags" : "test, test2, test56"} ]
+        $httpBackend.expect('GET', 'https://api.mongolab.com/api/1/databases/angular-training-customers/collections/users?apiKey=KGtpIoEDeTqTkwISpgnhDarX_Vj1AdJA').respond([ { "_id" : { "$oid" : "57163da5e4b065a8c4d775e8"} , "name" : "Facebook" , "tags" : "test" , "url" : "http://facebook.com"} , { "_id" : { "$oid" : "5718db94e4b0e99eb262b0ed"} , "name" : "Twitter" , "url" : "http://twitter.com" , "tags" : "twitter, hello"} , { "_id" : { "$oid" : "571a082d0a00b2160cdda797"} , "name" : "google" , "url" : "http://google.bg" , "tags" : "google, evil"} , { "_id" : { "$oid" : "571dcd9ff8c2e747621458ec"} , "name" : "test" , "url" : "http://epam.com" , "tags" : "test, test2, test56"} ]
         );
         $httpBackend.when('DELETE', /mongolab/).respond(200);
         
     }));
 
 
-    it('should get all bookmarks', inject(function($rootScope){
+    it('should get all users', inject(function($rootScope){
 
-        var result = bookmarksService.query();
+        var result = usersService.query();
         
         $httpBackend.flush();
         
@@ -30,7 +30,7 @@ describe('ba.bookmarks-service', function () {
 
     it('should broadcast an event on delete', inject(function($rootScope){
         
-        var result = bookmarksService.query();
+        var result = usersService.query();
         
         $httpBackend.flush();
         
@@ -46,7 +46,7 @@ describe('ba.bookmarks-service', function () {
        
     it('should broadcast an event on delete', inject(function($rootScope){
         
-        var result = bookmarksService.query();
+        var result = usersService.query();
         
         $httpBackend.flush();
         
@@ -54,7 +54,7 @@ describe('ba.bookmarks-service', function () {
         
         result.forEach(function(bookmark){
             bookmark.save();
-            expect($broadcast).toHaveBeenCalledWith('bookmarksUpdated', this);
+            expect($broadcast).toHaveBeenCalledWith('usersUpdated', this);
         });
     }));
 

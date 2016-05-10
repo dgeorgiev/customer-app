@@ -1,10 +1,10 @@
-describe('ba.components.bookmarks-form', function () {
+describe('ca.components.order-form', function () {
     
     beforeEach(module('ui.router'));
     beforeEach(module('material.components.dialog'));
     
-    beforeEach(module('ba.components.bookmark-form', function ($provide ) {
-        $provide.factory('bookmarksService', function () {
+    beforeEach(module('ca.components.bookmark-form', function ($provide ) {
+        $provide.factory('ordersService', function () {
             return {
                 'save': function(id, callback){
                     var fakePromise = $q.defer();
@@ -19,12 +19,12 @@ describe('ba.components.bookmarks-form', function () {
     }));
     
     var directive, $state, $mdDialog, $q;
-    beforeEach(inject(function (directiveBuilder, _$state_, _$mdDialog_, bookmarksService, _$q_) {
+    beforeEach(inject(function (directiveBuilder, _$state_, ordersService, _$q_) {
         $state = _$state_;
         $mDialog = _$mdDialog_;
         $q =  _$q_;
         
-        directive = directiveBuilder.$build('<bookmark-form></bookmark-form>');
+        directive = directiveBuilder.$build('<order-form></order-form>');
         
         directive.scope.bookmarkForm = {
             $valid: false,
@@ -67,7 +67,7 @@ describe('ba.components.bookmarks-form', function () {
         directive.scope.save(directive.scope.bookmarkForm);
         directive.scope.$digest();
          
-        expect($broadcast).toHaveBeenCalledWith('bookmarksUpdated');
+        expect($broadcast).toHaveBeenCalledWith('orderUpdated');
     }));
     
     

@@ -7,7 +7,7 @@ describe('ca.components.customers-list', function () {
     beforeEach(inject(function (directiveBuilder, _$state_) {
         $state = _$state_;
         
-        directive = directiveBuilder.$build('<bookmarks-list bookmarks="bookmarks" show-form="showForm"></bookmarks-list>');
+        directive = directiveBuilder.$build('<customers-list></customers-list>');
         directive.scope.bookmarks = [
             {
                 "_id": {

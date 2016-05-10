@@ -1,10 +1,9 @@
-describe('ba.components.bookmarks-form', function () {
+describe('ca.components.customer-form', function () {
+   
+    beforeEach(module('ca.users-service'));
     
-    beforeEach(module('ui.router'));
-    beforeEach(module('material.components.dialog'));
-    
-    beforeEach(module('ba.components.bookmark-form', function ($provide ) {
-        $provide.factory('bookmarksService', function () {
+    beforeEach(module('ca.components.customer-form', function ($provide ) {
+        $provide.factory('usersService', function () {
             return {
                 'save': function(id, callback){
                     var fakePromise = $q.defer();
@@ -18,20 +17,24 @@ describe('ba.components.bookmarks-form', function () {
         });
     }));
     
-    var directive, $state, $mdDialog, $q;
-    beforeEach(inject(function (directiveBuilder, _$state_, _$mdDialog_, bookmarksService, _$q_) {
+    var directive, $state, $q;
+    beforeEach(inject(function (directiveBuilder, _$state_, usersService, _$q_) {
         $state = _$state_;
-        $mDialog = _$mdDialog_;
         $q =  _$q_;
         
-        directive = directiveBuilder.$build('<bookmark-form></bookmark-form>');
+        directive = directiveBuilder.$build('<customer-form></customer-form>');
         
-        directive.scope.bookmarkForm = {
+        directive.scope.userForm = {
             $valid: false,
             $setPristine: function() {},
             $setUntouched: function() {}
         };
-        directive.scope.close();
+        
+        usersService.prototype.save = function(callback){
+            console.log('booo');
+            callback();
+        };
+
 
     }));
 
@@ -40,34 +43,58 @@ describe('ba.components.bookmarks-form', function () {
         
         expect(directive.element.html()).toBeDefined();
         
-
+        
     }));
 
     it('should clear the form', function(){
         
-        directive.scope.bookmark = {
-            name: 'hello',
-            url: 'http://hello.co',
-            tags: ''
+        
+        var scope = directive.element.isolateScope();
+        scope.customer = {
+            first_name: 'John',
+            last_name: 'Doe',
+            city: 'Sofia'
         };
         
         
-        expect(directive.scope.bookmark).toEqual({name: 'hello', url: 'http://hello.co', tags: ''});
+        expect(scope.customer).toEqual({
+            first_name: 'John',
+            last_name: 'Doe',
+            city: 'Sofia'
+        });
         
-        directive.scope.clear(directive.scope.bookmarkForm);
+        scope.clear(scope.userForm);
         
-        expect(directive.scope.bookmark).toEqual({url: ''});
+        expect(scope.customer).toEqual({});
+        
     });
     
     
-    it('should broadcast an event when bookmark is saved', inject(function($rootScope){
-        
+    it('should broadcast an event when user is saved', inject(function($rootScope){
+        var scope = directive.element.isolateScope();
+        scope.customer = {
+            first_name: 'John',
+            last_name: 'Doe',
+            city: 'Sofia'
+        };
         var $broadcast = spyOn($rootScope, '$broadcast');
         
-        directive.scope.save(directive.scope.bookmarkForm);
-        directive.scope.$digest();
+        scope.save(scope.userForm);
+        
+        
+        
+        scope.customer = {
+            first_name: 'John',
+            last_name: 'Doe',
+            city: 'Sofia',
+            _id: '1'
+        };
+        
+        scope.save(scope.userForm);
+        
+        scope.$digest();
          
-        expect($broadcast).toHaveBeenCalledWith('bookmarksUpdated');
+        expect($broadcast).toHaveBeenCalledWith('usersUpdated');
     }));
     
     

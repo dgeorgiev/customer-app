@@ -1,6 +1,6 @@
 angular.module('ca.components.order-form', [
     'ca.orders-service'
-]).directive('orderForm', function($rootScope, $mdDialog, $mdMedia, ordersService){
+]).directive('orderForm', function($rootScope, ordersService){
     return {
         templateUrl: 'app/components/order-form/order-form.template.html',
         scope: {

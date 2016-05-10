@@ -12,8 +12,6 @@ angular.module('ca.components.customers-app', [
             $scope.users = usersService.query();
             $scope.orders = ordersService.query();
             
-            ordersService.byCustomer('5730ebccb3f30a5c0ce968bd');
-            
             $scope.$on('usersUpdated', function(event){
                 $scope.users = usersService.query();
             });
